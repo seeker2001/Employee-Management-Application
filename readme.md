@@ -10,6 +10,7 @@ The Employee Management Application is a robust web-based tool developed using F
 - **Add, Edit, and Delete:** Empowering administrators, the app allows them to add new employees, update existing data, and remove outdated records.
 - **Effortless Data Entry:** Administrators can efficiently input and update employee details, ensuring up-to-date and accurate personnel information.
 - **Secure Access:** User accounts are secured, ensuring that only authorized administrators can access sensitive employee data.
+- **Docker Support:** A Dockerfile is included in the project directory, facilitating easy deployment and containerization of the application.
 - **Intuitive User Interface:** The application provides a user-friendly interface that simplifies data management for administrators.
 
 **For Employees:**
