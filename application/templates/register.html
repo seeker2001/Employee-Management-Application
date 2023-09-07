@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Register Page
+{% endblock %}
+
+{% block nav %}
+    {% include 'nav.html' %} 
+{% endblock %}
+
+{% block content %}
+<!-- Register page for the employee -->
+<body class="text-center">
+    <div class="container bg-dark pb-2 mt-3" style="min-height:70vh; border-radius: 4%;">
+        <form class="form-register" method="POST" style="color:white">
+            {{ form.hidden_tag() }}
+            <h1 class="text-center m-2 p-2">
+                Please Create your account
+            </h1>
+            <br>
+            <div class="row m-3">
+                {{ form.firstName.label(class="mb-2 h5 col-4") }}
+                {{ form.firstName(class="form-control mb-1 col-6", placeholder='First Name') }}
+            </div>
+            
+            <div class="row m-3">
+                {{ form.lastName.label(class="mb-2 h5 col-4")  }}
+                {{ form.lastName(class="form-control mb-1 col-6", placeholder='Last Name') }}
+            </div>
+    
+            <div class="row m-3">
+                {{ form.email_address.label(class="mb-2 h5 col-4")  }}
+                {{ form.email_address(class="form-control mb-1 col-6", placeholder='Email Address') }}
+            </div>
+    
+            <div class="row m-3">
+                {{ form.phoneNumber.label(class="mb-2 h5 col-4")  }}
+                {{ form.phoneNumber(class="form-control mb-1 col-6", placeholder='Phone Number') }}
+            </div>
+            
+            <div class="row m-3">
+                {{ form.address.label(class="mb-2 h5 col-4") }}
+                {{ form.address(class="form-control mb-1 col-6", placeholder='Address') }}
+            </div>
+
+            <div class="row m-3">
+                {{ form.dob.label(class="mb-2 h5 col-4") }}
+                {{ form.dob(class="form-control mb-1 col-6") }}
+            </div>
+
+            <div class="row m-3">
+                {{ form.password1.label(class="mb-2 h5 col-4") }}
+                {{ form.password1(class="form-control mb-1 col-6", placeholder='Create Password') }}
+            </div>
+
+            <div class="row m-3">
+                {{ form.password2.label(class="mb-2 h5 col-4") }}
+                {{ form.password2(class="form-control mb-1 col-6", placeholder='Confirm Password') }}
+            </div>
+
+            <div class="checkbox mb-3 text-center">
+                <h6>Already have an account?</h6>
+                <a href="{{ url_for('login_page') }}" class="btn btn-sm btn-secondary">Login</a>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                {{ form.submit(class="btn btn-lg btn-primary button mb-4", style="display:block; width:30%;") }}
+            </div>
+        </form>
+    </div>
+</body>
+{% endblock %}

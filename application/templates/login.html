@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login Page
+{% endblock %}
+
+{% block nav %}
+    {% include 'nav.html' %} 
+{% endblock %}
+
+{% block content %}
+<!-- Login page (supported for both the employee as well as admin) -->
+<body class="text-center">
+    <div class="container bg-dark pb-2 mt-4" style="min-height: 60vh;border-radius: 4%;">
+        <form method="POST" class="form-signin" style="color:white;">
+            {{ form.hidden_tag() }}
+            <h1 class="m-2 p-3">
+                Please Login
+            </h1>
+            <br>
+            <div class="row m-3">
+                {{ form.email_address.label(class="mb-2 h5 col-4") }}
+                {{ form.email_address(class="form-control mb-1 col-6", placeholder='Email Address') }}
+            </div>
+
+            <div class="row m-3">
+                {{ form.password.label(class='mb-2 h5 col-4') }}
+                {{ form.password(class="form-control mb-1 col-6", placeholder='Enter password') }}
+            </div>
+
+            {{ form.role.label(class="mb-3 me-4") }}
+            {% for subfield in form.role %}
+                <tr>
+                    <td>{{ subfield.label(class="m-3") }}</td>
+                    <td>{{ subfield }}</td>
+                </tr>
+            {% endfor %}
+
+            <div class="checkbox mb-3">
+                <h6>Create account?</h6>
+                <a href="{{ url_for('register_page') }}" class="btn btn-sm btn-secondary">Register</a>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                {{form.submit(class='btn btn-primary btn-lg', style="display:block;width:30%")}}
+            </div>
+        </form>
+    </div>
+</body>
+{% endblock %}

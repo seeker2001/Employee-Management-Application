@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Employee Page
+{% endblock %}
+
+{% block nav %}
+    {% include 'nav.html' %} 
+{% endblock %}
+
+{% block content %}
+<!-- Table showing the info of the employee who logged in -->
+<div class="row m-2" style="margin-top:20px;">
+    <div class="col-12">
+        <h2 class="text-center m-2">Employee Information</h2>
+        <br>
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <!-- Your Columns HERE -->
+                    <th scope="col">FirstName</th>
+                    <th scope="col">lastName</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">DOB</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ emp.firstName }}</td>
+                    <td>{{ emp.lastName }}</td>
+                    <td>{{ emp.email_address }}</td>
+                    <td>{{ emp.phoneNumber }}</td>
+                    <td>{{ emp.address }}</td>
+                    <td>{{ emp.dob }}</td>
+                    <td>
+                        <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{ emp.id }}">
+                            Edit
+                        </button>
+                    </td>
+                </tr>
+                {% include 'include/update_employee_modal.html' %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

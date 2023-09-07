@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Employee Page
+{% endblock %}
+
+{% block nav %}
+    {% include 'nav.html' %} 
+{% endblock %}
+
+{% block content %}
+<!-- this page will show the data of employees which the admin has searched -->
+<div class="row m-2" style="margin-top:20px;">
+    <div class="col-12">
+        <h2 class="text-center m-2">Employee Information</h2>
+        <br>
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <!-- Your Columns HERE -->
+                    <th scope="col">FirstName</th>
+                    <th scope="col">lastName</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">DOB</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for emp in result %}
+                {% if not emp.isAdmin %}
+                <tr>
+                    <td>{{ emp.firstName }}</td>
+                    <td>{{ emp.lastName }}</td>
+                    <td>{{ emp.email_address }}</td>
+                    <td>{{ emp.phoneNumber }}</td>
+                    <td>{{ emp.address }}</td>
+                    <td>{{ emp.dob }}</td>
+                    <td>
+                        <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{ emp.id }}">
+                            Edit
+                        </button>
+                        <a href="{{url_for('delete_from_admin', id=emp.id)}}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to delete')">Delete</a>
+                    </td>
+                </tr>
+                {% include 'include/update_employee_modal.html' %}
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <div class="d-flex justify-content-center">
+            <a href="{{url_for('admin_page')}}" class="btn btn-primary btn-lg">Go to master screen</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

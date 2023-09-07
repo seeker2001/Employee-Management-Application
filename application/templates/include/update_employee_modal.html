@@ -1,0 +1,63 @@
+<!-- Modal for updating existing infomation of employee by the admin -->
+<div class="modal fade" id="modaledit{{emp.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalScrollableTitle">Update Imformation</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {% if current_user.isAdmin %}
+        <form method="POST" class="form-register" action="{{url_for('update_from_admin')}}">
+        {% else %}
+        <form method="POST" class="form-register">
+        {% endif %}
+          {{ updateEmployeeForm.hidden_tag() }}
+          <br>
+          {{ updateEmployeeForm.id_(type="hidden", value=emp.id) }}
+          <div class="row m-3">
+              {{ updateEmployeeForm.firstName.label(class="mb-2 h6 col-4") }}
+              {{ updateEmployeeForm.firstName(class="form-control mb-1 col-6", placeholder='First Name', value=emp.firstName ) }}
+          </div>
+          
+          <div class="row m-3">
+              {{ updateEmployeeForm.lastName.label(class="mb-2 h6 col-4")  }}
+              {{ updateEmployeeForm.lastName(class="form-control mb-1 col-6", placeholder='Last Name', value=emp.lastName) }}
+          </div>
+  
+          <div class="row m-3">
+              {{ updateEmployeeForm.phoneNumber.label(class="mb-2 h6 col-4")  }}
+              {{ updateEmployeeForm.phoneNumber(class="form-control mb-1 col-6", placeholder='Phone Number', value=emp.phoneNumber) }}
+          </div>
+
+          <div class="row m-3">
+            {{ updateEmployeeForm.address.label(class="mb-2 h6 col-4") }}
+            {{ updateEmployeeForm.address(class="form-control mb-1 col-6", placeholder='Address', value=emp.address) }}
+          </div>          
+          <div class="row m-3">
+              {{ updateEmployeeForm.dob.label(class="mb-2 h6 col-4") }}
+              {{ updateEmployeeForm.dob(class="form-control mb-1 col-6", value=emp.dob) }}
+          </div>
+
+          <div class="d-flex justify-content-center">
+              {{ updateEmployeeForm.submit(class="btn btn-lg btn-primary button mb-4", style="") }}
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .modal-content {
+    background-color: #212121;
+  }
+
+</style>

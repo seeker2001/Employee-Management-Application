@@ -1,0 +1,72 @@
+<!-- Modal for adding a new employee by admin -->
+<div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalScrollableTitle">Add Employee</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" class="form-register" action="{{url_for('add_from_admin')}}">
+          {{ addEmployeeForm.hidden_tag() }}
+          <br>
+          <div class="row m-3">
+              {{ addEmployeeForm.firstName.label(class="mb-2 h6 col-4") }}
+              {{ addEmployeeForm.firstName(class="form-control mb-1 col-6", placeholder='First Name') }}
+          </div>
+          
+          <div class="row m-3">
+              {{ addEmployeeForm.lastName.label(class="mb-2 h6 col-4")  }}
+              {{ addEmployeeForm.lastName(class="form-control mb-1 col-6", placeholder='Last Name') }}
+          </div>
+  
+          <div class="row m-3">
+              {{ addEmployeeForm.email_address.label(class="mb-2 h6 col-4")  }}
+              {{ addEmployeeForm.email_address(class="form-control mb-1 col-6", placeholder='Email Address') }}
+          </div>
+  
+          <div class="row m-3">
+              {{ addEmployeeForm.phoneNumber.label(class="mb-2 h6 col-4")  }}
+              {{ addEmployeeForm.phoneNumber(class="form-control mb-1 col-6", placeholder='Phone Number') }}
+          </div>
+          
+          <div class="row m-3">
+              {{ addEmployeeForm.address.label(class="mb-2 h6 col-4") }}
+              {{ addEmployeeForm.address(class="form-control mb-1 col-6", placeholder='Address') }}
+          </div>
+
+          <div class="row m-3">
+              {{ addEmployeeForm.dob.label(class="mb-2 h6 col-4") }}
+              {{ addEmployeeForm.dob(class="form-control mb-1 col-6") }}
+          </div>
+
+          <div class="row m-3">
+              {{ addEmployeeForm.password1.label(class="mb-2 h6 col-4") }}
+              {{ addEmployeeForm.password1(class="form-control mb-1 col-6", placeholder='Create Password') }}
+          </div>
+
+          <div class="row m-3">
+              {{ addEmployeeForm.password2.label(class="mb-2 h6 col-4") }}
+              {{ addEmployeeForm.password2(class="form-control mb-1 col-6", placeholder='Confirm Password') }}
+          </div>
+
+          <div class="d-flex justify-content-center">
+              {{ addEmployeeForm.submit(class="btn btn-lg btn-primary button mb-4", style="") }}
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .modal-content {
+      background-color: #212121;
+  }
+</style>
